@@ -24,4 +24,4 @@
 /spring/*.pid
 
 # Ignore idea
-.idea
+.idea/workspace.xml
