@@ -8,7 +8,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   get signup_path # visits the signup path using get
   # In order to test the form submittion, we need to issue a POST request to users_path
 
-  assert_select 'form[action="/signup"]' # checks that form submits to /signup
+  #assert_select 'form[action="/signup"]' # checks that form submits to /signup
   assert_no_difference 'User.count' do
     post signup_path, params: { user: { name:  "",
                                        email: "user@invalid",

@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
 
-ruby '2.3.0'
+ruby '2.3.3'
 
 gem 'rails',        '5.0.0.1'
-gem 'bcrypt',         '3.1.11'
+gem 'bcrypt',         '3.1.11' # has_secure_password
+gem 'faker',          '1.6.6' # Create data models using fake names in db/seed
+gem 'will_paginate',           '3.1.0' # allows to create numbered pages
+gem 'bootstrap-will_paginate', '0.0.10' # styling for numbered pages
 gem 'bootstrap-sass', '3.3.6'
-gem 'puma',         '3.4.0'
+gem 'puma',         '3.4.0' # server
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.0.0'
 gem 'coffee-rails', '4.2.1'

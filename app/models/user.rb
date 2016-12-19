@@ -20,7 +20,7 @@ class User < ApplicationRecord
     format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false })
 
-  validates(:password, presence: true, length: { minimum: 5 } )
+  validates(:password, presence: true, length: { minimum: 5 }, allow_nil: true ) # allow_nil: true - lets a user update their account information without having to recreate a password everytime
 
   # presence: true checks for .blank? NOT --> .empty?
 
