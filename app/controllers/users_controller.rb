@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   def index
     #@users = User.all
     # rails console => User.paginate(page: 1)
-    @users = User.paginate(page: params[:page])
+    # @users = User.paginate(page: params[:page])
+    # Only lists users that are activated
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
 
   def new
@@ -16,16 +18,23 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # This will only allow you to log in if you are activated
+    redirect_to root_url and return unless @user.activated?
     #debugger # byebug gem method - see rails console
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
+=begin
       log_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
       # equivalent to => redirect_to user_url(@user)
+=end
     else
       render 'new'
     end

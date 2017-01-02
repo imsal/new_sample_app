@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   resources :users # Creates the REST routes needed in controllers
+  resources :account_activations, only: [:edit] # sets up just the edit action for this route
 end

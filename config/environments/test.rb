@@ -1,4 +1,10 @@
 Rails.application.configure do
+
+  # Additions for mailer
+  config.action_mailer.delivery_method = :test
+  config.action_mailer.default_url_options = { host: 'example.com'}
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's
