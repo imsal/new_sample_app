@@ -61,18 +61,21 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
 
   # ADDED THIS FOR HEROKU SENDGRID
+  #
+
+
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   host = 'young-castle-86811.herokuapp.com'
-  config.action_mailer.default_url_options = {host: host}
+  config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
-    :address => 'stmp.sendgrid.net',
+    :address        => 'smtp.sendgrid.net',
     :port           => '587',
     :authentication => :plain,
-#   $ heroku config:get SENDGRID_USERNAME
-#   => app60185847@heroku.com
-#   $ heroku config:get SENDGRID_PASSWORD
-#   => ukz36q0c0503
+    #   $ heroku config:get SENDGRID_USERNAME
+    #   => app60185847@heroku.com
+    #   $ heroku config:get SENDGRID_PASSWORD
+    #   => ukz36q0c0503
     :user_name      => ENV['SENDGRID_USERNAME'],
     :password       => ENV['SENDGRID_PASSWORD'],
     :domain         => 'heroku.com',
