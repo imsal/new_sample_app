@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'static_pages#home'
   get '/contact', to: 'static_pages#contact'
   get '/about', to: 'static_pages#about'
@@ -11,4 +10,5 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   resources :users # Creates the REST routes needed in controllers
   resources :account_activations, only: [:edit] # sets up just the edit action for this route
+  resources :password_resets, only: [:edit, :update, :new, :create] # for creating forms with password resets
 end
